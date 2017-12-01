@@ -1,0 +1,1 @@
+C:\Users\Folling\IdeaProjects\Exprust\target\debug\Exprust-1a54048c98644a2c.exe: C:\Users\Folling\IdeaProjects\Exprust\src\containers\stack.rs C:\Users\Folling\IdeaProjects\Exprust\src\lib.rs C:\Users\Folling\IdeaProjects\Exprust\src\containers\mod.rs
