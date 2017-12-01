@@ -15,12 +15,12 @@ mod tests {
 
     #[bench]
     fn bench_parse(b: &mut Bencher) {
-        b.iter(|| ar::expr(b"(4+5)^(2^2*2)-(4^4)"));
+        b.iter(|| ar::expr(b"1+1"));
     }
 
     // #[test]
     fn now() {
-        if let IResult::Done(_, r) = ar::expr(b"4sin(86+(cos(0)+1)^2)"){
+        if let IResult::Done(_, r) = ar::expr(b"sin(2^pi)"){
             println!("{}", r);
         }
     }

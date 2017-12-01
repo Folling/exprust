@@ -62,12 +62,13 @@ pub mod ar {
     );
 
     named!(pub par_s<f64>, do_parse!(
-        init: alt_complete!(parens | float | function_term) >>
+        init: alt_complete!(parens | float | function_term | constant) >>
         res: fold_many0!(
             alt_complete!(
                  function_term |
                  parens |
-                 unsigned_float
+                 unsigned_float |
+                 constant
             ),
             init,
             |acc, f : f64| {
@@ -76,11 +77,30 @@ pub mod ar {
         ) >>
         (res)
     ));
+    use std::f64;
+
+    named!(pub constant<f64>, map!(
+            alt_complete!(
+                tag!("pi") |
+                tag!("e")  |
+                tag!("phi")
+            ),
+            |id : &[u8]|{
+                match id {
+                    b"pi" => f64::consts::PI,
+                    b"e"  => f64::consts::E,
+                    b"phi"=> 1.61803398874989484820458683436563811f64,
+                    _ => 0f64
+                }
+            }
+        )
+    );
 
     named!(pub factor<f64>,
         alt_complete!(
             par_s |
             float |
+            constant |
             parens
         )
     );
@@ -101,10 +121,10 @@ pub mod ar {
     named!(pub factor_term<f64>, do_parse!(
             init: power_term >>
             res: fold_many0!(
-                pair!(alt!(tag!("*") | tag!("/")), power_term),
+                pair!(alt!(tag!("*") | tag!("x") | tag!("/")), power_term),
                 init,
                 | acc, (op,val): (&[u8], f64)| {
-                    if (op[0] as char) == '*' { acc * val } else { acc / val}
+                    if (op[0] as char) == '/' { acc / val } else { acc * val}
                 }
             ) >>
             (res)
