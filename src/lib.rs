@@ -1,7 +1,7 @@
 #![feature(test)]
 
 extern crate test;
-pub mod ar;
+pub mod exprust;
 
 #[macro_use]
 
@@ -9,7 +9,7 @@ extern crate nom;
 
 #[cfg(test)]
 mod tests {
-    use ar::ar;
+    use exprust::ar;
     use nom::IResult;
     use test::Bencher;
 
@@ -20,7 +20,7 @@ mod tests {
 
     // #[test]
     fn now() {
-        if let IResult::Done(_, r) = ar::expr(b"sin(2^pi)"){
+        if let IResult::Done(_, r) = ar::eval(b"4==2*3"){
             println!("{}", r);
         }
     }
@@ -43,5 +43,12 @@ mod tests {
         assert_eq!(ar::expr(b"sin(86+(cos(0)+1)^2)"), IResult::Done(&b""[..],1f64));
         assert_eq!(ar::expr(b"4*sin(86+(cos(0)+1)^2)"), IResult::Done(&b""[..],4f64));
         assert_eq!(ar::expr(b"4sin(86+(cos(0)+1)^2)"), IResult::Done(&b""[..],4f64));
+        assert_eq!(ar::expr(b"|1|"), IResult::Done(&b""[..],1f64));
+        assert_eq!(ar::expr(b"|-1|"), IResult::Done(&b""[..],1f64));
+        assert_eq!(ar::eval(b"4==4"), IResult::Done(&b""[..],true));
+        assert_eq!(ar::eval(b"4!=3"), IResult::Done(&b""[..],true));
+        assert_eq!(ar::eval(b"2*2==1+3"), IResult::Done(&b""[..],true));
+        assert_eq!(ar::eval(b"2^3==8"), IResult::Done(&b""[..],true));
+        assert_eq!(ar::eval(b"(4-2)4==(16-8)"), IResult::Done(&b""[..],true));
     }
 }
