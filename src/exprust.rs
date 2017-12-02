@@ -3,6 +3,7 @@ pub mod ar {
     use nom::digit;
     // Parser definition
 
+    use std::f64;
     use std::str;
     use std::str::FromStr;
 
@@ -77,7 +78,14 @@ pub mod ar {
         ) >>
         (res)
     ));
-    use std::f64;
+
+    named!(pub abs<f64>, map!(
+            delimited!(tag!("|"), expr, tag!("|")),
+            |x : f64| {
+                x.abs()
+            }
+        )
+    );
 
     named!(pub constant<f64>, map!(
             alt_complete!(
@@ -101,6 +109,7 @@ pub mod ar {
             par_s |
             float |
             constant |
+            abs |
             parens
         )
     );
@@ -201,4 +210,34 @@ pub mod ar {
     (res)
     )
     );
+
+    named!(pub comp<&[u8]>,
+        alt_complete!(
+            tag!("==") |
+            tag!("<=") |
+            tag!(">=") |
+            tag!("!=") |
+            tag!("<")  |
+            tag!(">")  |
+            tag!("=")
+        )
+    );
+
+    named!(pub eval<bool>, map!(
+        tuple!(expr, comp, expr),
+        | (left, comp_op, right) : (f64, &[u8], f64)|{
+            match comp_op {
+                b"==" => left == right,
+                b"<=" => left <= right,
+                b">=" => left >= right,
+                b"!=" => left != right,
+                b"<" => left < right,
+                b">" => left > right,
+                b"=" => left == right,
+                _ => false
+            }
+        }
+    )
+    );
+
 }
