@@ -7,21 +7,17 @@ pub mod ar {
     use std::str;
     use std::str::FromStr;
 
-    named!(unsigned_float <f64>, map_res!(
+    named!(
+        unsigned_float<f64>,
         map_res!(
-          recognize!(
-            alt_complete!(
-              delimited!(opt!(digit), tag!("."), digit) |
-              digit
-            )
-          ),
-          str::from_utf8
-        ),
-        FromStr::from_str
-    ));
-
-    named!(pub op<char>,
-       one_of!("/*:^|")
+            map_res!(
+                recognize!(alt_complete!(
+                    delimited!(opt!(digit), tag!("."), digit) | digit
+                )),
+                str::from_utf8
+            ),
+            FromStr::from_str
+        )
     );
 
     named!(pub signs<&[u8]>,
@@ -58,16 +54,65 @@ pub mod ar {
         }
     ));
 
+    named!(pub unsigned_hex<f64>, map!(
+        preceded!(tag!("0x"), nom::hex_digit),
+            | bytes : &[u8]|{
+                (i64::from_str_radix(str::from_utf8(bytes).unwrap(), 16).unwrap_or(0) as f64)
+            }
+    ));
+
+    named!(pub hex<f64>, map!(
+        pair!(
+          opt!(eval_signs),
+          unsigned_hex
+        ),
+        |(sign, value): (Option<u8>, f64)| {
+          match sign{
+            Some(b'-') => -1f64*value,
+            _ => 1f64 * value
+          }
+        }
+    ));
+
+    named!(pub bits<&[u8]>,
+        take_while!(
+            call!(
+                |c| c == '1' as u8 || c == '0' as u8
+            )
+        )
+    );
+
+    named!(pub unsigned_binary<f64>, map!(
+        preceded!(tag!("0b"), bits),
+            | bytes : &[u8]|{
+                (i64::from_str_radix(str::from_utf8(bytes).unwrap(), 2).unwrap_or(0) as f64)
+    }));
+
+    named!(pub binary<f64>, map!(
+        pair!(
+          opt!(eval_signs),
+          unsigned_binary
+        ),
+        |(sign, value): (Option<u8>, f64)| {
+          match sign{
+            Some(b'-') => -1f64*value,
+            _ => 1f64 * value
+          }
+        }
+    ));
+
     named!(pub parens<f64>,
         delimited!(tag!("("), expr, tag!(")"))
     );
 
     named!(pub par_s<f64>, do_parse!(
-        init: alt_complete!(parens | float | function_term | constant) >>
+        init: alt_complete!(parens | hex | binary | float | function_term | constant) >>
         res: fold_many0!(
             alt_complete!(
                  function_term |
                  parens |
+                 unsigned_hex |
+                 unsigned_binary |
                  unsigned_float |
                  constant
             ),
@@ -107,6 +152,8 @@ pub mod ar {
     named!(pub factor<f64>,
         alt_complete!(
             par_s |
+            hex |
+            binary |
             float |
             constant |
             abs |
@@ -130,7 +177,7 @@ pub mod ar {
     named!(pub factor_term<f64>, do_parse!(
             init: power_term >>
             res: fold_many0!(
-                pair!(alt!(tag!("*") | tag!("x") | tag!("/")), power_term),
+                pair!(alt!(tag!("*")| tag!("/")), power_term),
                 init,
                 | acc, (op,val): (&[u8], f64)| {
                     if (op[0] as char) == '/' { acc / val } else { acc * val}
@@ -239,5 +286,4 @@ pub mod ar {
         }
     )
     );
-
 }
