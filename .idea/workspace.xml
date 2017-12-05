@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d88c708-ced7-4a2c-b87b-0e8c14b05508" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/parser/comparison.rs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/parser/hierarchy.rs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/parser/mod.rs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/parser/numbers.rs" />
       <change type="DELETED" beforePath="$USER_HOME$/.CLion2017.1/config/options/keyboard.xml" afterPath="" />
       <change type="DELETED" beforePath="$USER_HOME$/.CLion2017.1/config/options/notifications.xml" afterPath="" />
       <change type="DELETED" beforePath="$USER_HOME$/CLionProjects/Discord++/.idea/.name" afterPath="" />
@@ -21,16 +17,11 @@
       <change type="DELETED" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/Discord__.dir/progress.make" afterPath="" />
       <change type="DELETED" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/Discord__.cbp" afterPath="" />
       <change type="DELETED" beforePath="$USER_HOME$/CLionProjects/Hello_World/cmake-build-debug/compr.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/exprust.rs" afterPath="" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CMakeDetermineCompilerABI_C.bin" afterPath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CMakeDetermineCompilerABI_C.bin" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CMakeDetermineCompilerABI_CXX.bin" afterPath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CMakeDetermineCompilerABI_CXX.bin" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdC/a.exe" afterPath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdC/a.exe" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdCXX/a.exe" afterPath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdCXX/a.exe" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/feature_tests.bin" afterPath="$USER_HOME$/CLionProjects/Discord++/cmake-build-debug/CMakeFiles/feature_tests.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/deps/libexprust-4106ecbf1e2a721f.rmeta" afterPath="$PROJECT_DIR$/target/debug/deps/libexprust-4106ecbf1e2a721f.rmeta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/deps/libexprust-5038cd92e4c95a85.rlib" afterPath="$PROJECT_DIR$/target/debug/deps/libexprust-5038cd92e4c95a85.rlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/libexprust.rlib" afterPath="$PROJECT_DIR$/target/debug/libexprust.rlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/libexprust.rmeta" afterPath="$PROJECT_DIR$/target/debug/libexprust.rmeta" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/.CLion2017.2/config/options/editor.xml" afterPath="$USER_HOME$/.CLion2017.2/config/options/editor.xml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/.CLion2017.2/config/options/ide.general.xml" afterPath="$USER_HOME$/.CLion2017.2/config/options/ide.general.xml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/.CLion2017.2/config/options/runner.layout.xml" afterPath="$USER_HOME$/.CLion2017.2/config/options/runner.layout.xml" />
@@ -48,14 +39,6 @@
       <change type="MODIFICATION" beforePath="$USER_HOME$/CLionProjects/WikiCompressor/WikiCompressor.cpp" afterPath="$USER_HOME$/CLionProjects/WikiCompressor/WikiCompressor.cpp" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Documents/FantasyWorldCreationTool/FantasyWorldCreationTool.pro" afterPath="$USER_HOME$/Documents/FantasyWorldCreationTool/FantasyWorldCreationTool.pro" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Documents/FantasyWorldCreationTool/main.cpp" afterPath="$USER_HOME$/Documents/FantasyWorldCreationTool/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lib.rs" afterPath="$PROJECT_DIR$/src/lib.rs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-4106ecbf1e2a721f/lib-exprust-4106ecbf1e2a721f" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-4106ecbf1e2a721f/lib-exprust-4106ecbf1e2a721f" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-4106ecbf1e2a721f/lib-exprust-4106ecbf1e2a721f.json" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-4106ecbf1e2a721f/lib-exprust-4106ecbf1e2a721f.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-5038cd92e4c95a85/lib-exprust-5038cd92e4c95a85" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-5038cd92e4c95a85/lib-exprust-5038cd92e4c95a85" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-5038cd92e4c95a85/lib-exprust-5038cd92e4c95a85.json" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/exprust-5038cd92e4c95a85/lib-exprust-5038cd92e4c95a85.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/debug/libExprust.d" afterPath="$PROJECT_DIR$/target/debug/libExprust.d" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -111,8 +94,8 @@
       <file leaf-file-name="numbers.rs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/parser/numbers.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="147" column="9" lean-forward="true" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+            <state relative-caret-position="390">
+              <caret line="71" column="25" lean-forward="true" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -437,7 +420,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -445,7 +427,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33804348" sideWeight="0.5082667" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33804348" sideWeight="0.49173334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33804348" sideWeight="0.49173334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.49813333" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -702,8 +684,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/numbers.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="147" column="9" lean-forward="true" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+        <state relative-caret-position="390">
+          <caret line="71" column="25" lean-forward="true" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
           <folding />
         </state>
       </provider>
