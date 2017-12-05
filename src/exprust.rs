@@ -105,25 +105,6 @@ pub mod ar {
         delimited!(tag!("("), expr, tag!(")"))
     );
 
-    named!(pub par_s<f64>, do_parse!(
-        init: alt_complete!(parens | hex | binary | float | function_term | constant) >>
-        res: fold_many0!(
-            alt_complete!(
-                 function_term |
-                 parens |
-                 unsigned_hex |
-                 unsigned_binary |
-                 unsigned_float |
-                 constant
-            ),
-            init,
-            |acc, f : f64| {
-                acc*f
-            }
-        ) >>
-        (res)
-    ));
-
     named!(pub abs<f64>, map!(
             delimited!(tag!("|"), expr, tag!("|")),
             |x : f64| {
@@ -151,7 +132,7 @@ pub mod ar {
 
     named!(pub factor<f64>,
         alt_complete!(
-            par_s |
+            function_term |
             hex |
             binary |
             float |
@@ -248,7 +229,7 @@ pub mod ar {
     named!(pub expr<f64>, do_parse!(
         init: alt_complete!(factor_term | function_term) >>
         res:  fold_many0!(
-            pair!(alt!(tag!("+") | tag!("-")), alt_complete!(factor_term | function_term) ),
+            pair!(alt!(tag!("+") | tag!("-")), factor_term),
             init,
             |acc, (op, val): (&[u8], f64)| {
                 if (op[0] as char) == '+' { acc + val } else { acc - val }
