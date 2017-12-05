@@ -5,7 +5,7 @@ pub mod f64_flag_magic {
         Hex,
         Dec,
         Bin,
-        Oct
+        Oct,
     }
 
     pub trait FlagFunc {
@@ -17,7 +17,7 @@ pub mod f64_flag_magic {
         fn degrees(&self, flag: Flag) -> f64 {
             match flag {
                 Flag::AsDegrees => self.to_degrees(),
-                _ => self.clone()
+                _ => self.clone(),
             }
         }
         fn convert(self, flag: Flag) -> String {
@@ -25,7 +25,7 @@ pub mod f64_flag_magic {
                 Flag::Hex => format!("0x{:x}", self as i64),
                 Flag::Bin => format!("0b{:b}", self as i64),
                 Flag::Oct => format!("0o{:o}", self as i64),
-                _ => self.to_string()
+                _ => self.to_string(),
             }
         }
     }

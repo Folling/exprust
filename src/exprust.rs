@@ -1,6 +1,6 @@
 pub mod ar {
     extern crate nom;
-    use nom::digit;
+    use nom::{digit, oct_digit };
     // Parser definition
 
     use std::f64;
@@ -101,6 +101,25 @@ pub mod ar {
         }
     ));
 
+    named!(pub unsigned_oct<f64>, map!(
+        preceded!(tag!("0o"), oct_digit),
+            | bytes : &[u8]|{
+                (i64::from_str_radix(str::from_utf8(bytes).unwrap(), 8).unwrap_or(0) as f64)
+    }));
+
+    named!(pub oct<f64>, map!(
+        pair!(
+          opt!(eval_signs),
+          unsigned_oct
+        ),
+        |(sign, value): (Option<u8>, f64)| {
+          match sign{
+            Some(b'-') => -1f64*value,
+            _ => 1f64 * value
+          }
+        }
+    ));
+
     named!(pub parens<f64>,
         delimited!(tag!("("), expr, tag!(")"))
     );
@@ -145,6 +164,7 @@ pub mod ar {
             function_term |
             hex |
             binary |
+            oct |
             float |
             constant |
             abs |
