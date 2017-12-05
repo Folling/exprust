@@ -130,8 +130,18 @@ pub mod ar {
         )
     );
 
+    named!(pub degrees<f64>,
+        map!(
+            pair!( alt_complete!(parens | hex | binary | float), tag!("°")),
+            | (x, _) : (f64, &[u8])|{
+                x.to_radians()
+            }
+        )
+    );
+
     named!(pub factor<f64>,
         alt_complete!(
+            degrees |
             function_term |
             hex |
             binary |
@@ -217,9 +227,9 @@ pub mod ar {
                     b"asin"  => val.asin().to_degrees(),
                     b"acos"  => val.acos().to_degrees(),
                     b"atan"  => val.atan().to_degrees(),
-                    b"sin"   => val.to_radians().sin(),
-                    b"cos"   => val.to_radians().cos(),
-                    b"tan"   => val.to_radians().tan(),
+                    b"sin"   => val.sin(),
+                    b"cos"   => val.cos(),
+                    b"tan"   => val.tan(),
                     _        => val
                 }
             }
