@@ -2,14 +2,13 @@
 
 extern crate test;
 pub mod parser;
-pub mod flag_funcs;
 
 #[macro_use]
 extern crate nom;
 
 #[cfg(test)]
 mod tests {
-    use parser::hierarchy::expr;
+    use parser::hierarchy::{expr, parse, AS_DEGREES, NONE, HEX, OCT, BIN};
     use parser::comparison::eval;
     use nom::IResult;
     use test::Bencher;
@@ -21,9 +20,7 @@ mod tests {
 
     #[test]
     fn now() {
-        if let IResult::Done(t, r) = expr(b"4") {
-            println!("{}", r);
-        }
+        println!("{}", parse("0b1011*(0b11-0b1)^0b101", HEX | AS_DEGREES))
     }
 
     #[test]
@@ -39,10 +36,7 @@ mod tests {
         assert_eq!(expr(b"4^3"), IResult::Done(&b""[..], 64f64));
         assert_eq!(expr(b"4^(3-1)"), IResult::Done(&b""[..], 16f64));
         assert_eq!(expr(b"-3^(2+3^2)"), IResult::Done(&b""[..], -177147f64));
-        assert_eq!(
-            expr(b"(0x14)^(2+0x1)"),
-            IResult::Done(&b""[..], 8000f64)
-        );
+        assert_eq!(expr(b"(0x14)^(2+0x1)"), IResult::Done(&b""[..], 8000f64));
         assert_eq!(expr(b"0b11011"), IResult::Done(&b""[..], 27f64));
         assert_eq!(
             expr(b"0b1011*(0b11-0b1)^0b101"),
