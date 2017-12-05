@@ -16,12 +16,12 @@ mod tests {
 
     #[bench]
     fn bench_parse(b: &mut Bencher) {
-        b.iter(|| ar::expr(b"1+1"));
+        b.iter(|| ar::expr(b"sin(15+4^2+3*2*cos(4))"));
     }
 
     #[test]
     fn now() {
-        if let IResult::Done(t, r) = ar::expr(b"cos((1+1)\xC2\xB0)") {
+        if let IResult::Done(t, r) = ar::expr(b"4") {
             println!("{}", r);
         }
     }
@@ -59,6 +59,10 @@ mod tests {
         assert_eq!(
             ar::expr(b"sin(15+4^2+3*2*cos(4))"),
             IResult::Done(&b""[..], 0.9306537932852477f64)
+        );
+        assert_eq!(
+            ar::expr(b"(0o12455+0b1101)^(cos(0xAb123)*4)"),
+            IResult::Done(&b""[..], 711858057953021.3f64)
         );
         assert_eq!(ar::expr(b"|1|"), IResult::Done(&b""[..], 1f64));
         assert_eq!(ar::expr(b"|-1|"), IResult::Done(&b""[..], 1f64));
