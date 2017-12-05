@@ -1,1 +1,0 @@
-C:\Users\Folling\IdeaProjects\Exprust\target\release\exprust-f63fb6eb65238547.exe: C:\Users\Folling\IdeaProjects\Exprust\src\exprust.rs C:\Users\Folling\IdeaProjects\Exprust\src\flag_funcs.rs C:\Users\Folling\IdeaProjects\Exprust\src\lib.rs
