@@ -97,3 +97,28 @@ named!(pub expr<f64>, do_parse!(
 (res)
 )
 );
+
+pub const NONE : u64 = 0x0;
+pub const AS_DEGREES : u64 = 0x01;
+pub const HEX : u64 = 0x02;
+pub const BIN : u64 = 0x03;
+pub const OCT : u64 = 0x04;
+
+pub fn parse( expression : &str, flags : u64) -> String {
+    if let nom::IResult::Done(_ , mut underlying_float ) = expr(expression.as_bytes()) {
+        let mut res = underlying_float.to_string();
+        if flags & AS_DEGREES == AS_DEGREES {
+            underlying_float = underlying_float.to_degrees();
+        }
+        if flags & HEX == HEX {
+            res = format!("0x{:x}", underlying_float as u64);
+        } else if flags & OCT == OCT {
+            res = format!("0o{:o}", underlying_float as u64);
+        } else if flags & BIN == BIN {
+            res = format!("0b{:b}", underlying_float as u64);
+        }
+        res
+    } else {
+        "".to_string()
+    }
+}

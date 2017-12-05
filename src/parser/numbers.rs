@@ -1,6 +1,6 @@
 extern crate nom;
 
-use nom::{digit, oct_digit };
+use nom::{digit, oct_digit};
 
 use super::hierarchy::*;
 use std::str;
