@@ -30,3 +30,7 @@ named!(pub eval<bool>, map!(
     }
 )
 );
+
+pub fn evaluate(expression : &str) -> String{
+    eval(expression.as_bytes()).to_result().unwrap_or(false).to_string()
+}
