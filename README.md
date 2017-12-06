@@ -50,7 +50,7 @@ Exprust is an easy to use *expression parser* with some basic [customization Opt
 You can use a few flags to alter the output:
 
 | Flag       | Effect 			       |
-|:----------:|------------------------:|
+|:----------:|------------------------|
 | NONE       | returns normal output   |
 | AS_DEGREES | arc functions usually return the result in radians,<br>this switches it up to degrees |
 | BIN 		 | Wraps result in a binary number |
