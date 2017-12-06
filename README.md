@@ -1,6 +1,6 @@
 ## Introduction
 
-Exprust is an easy to use *expression parser* with some basic [customization Options](#customisation).
+Exprust is an easy to use *expression parser* with some light [customisation options](#customisation).
 
 ## Capabilities
 
@@ -19,7 +19,7 @@ Exprust is an easy to use *expression parser* with some basic [customization Opt
 | Constants 			 | pi 			    | 3.1415926...       |
 | Degrees				 | sin(30°) 		| 0.5 				 |
 
-**Note That any number here can also be a float and any operation can be paired with any other, PEMDAS is fully implemented**
+**Note that any number here can also be a float and any operation can be paired with any other, PEMDAS is fully implemented**
 
 ## Functions
 
