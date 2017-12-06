@@ -99,10 +99,10 @@ named!(pub expr<f64>, do_parse!(
 );
 
 pub const NONE : u64 = 0x0;
-pub const AS_DEGREES : u64 = 0x01;
-pub const HEX : u64 = 0x02;
-pub const BIN : u64 = 0x03;
-pub const OCT : u64 = 0x04;
+pub const BIN : u64 = 0x01;
+pub const OCT : u64 = 0x02;
+pub const HEX : u64 = 0x03;
+pub const AS_DEGREES : u64 = 0x04;
 
 pub fn parse( expression : &str, flags : u64) -> String {
     if let nom::IResult::Done(_ , mut underlying_float ) = expr(expression.as_bytes()) {
