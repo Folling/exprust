@@ -52,7 +52,8 @@ You can use a few flags to alter the output:
 | Flag       | Effect 			       |
 |:----------:|------------------------:|
 | NONE       | returns normal output   |
-| AS_DEGREES | arc functions usuall return the result in radians, this switches it up to degrees |
+| AS_DEGREES | arc functions usually return the result in radians, |
+|			 |	 this switches it up to degrees |
 | BIN 		 | Wraps result in a binary number |
 | OCT 		 | Wraps result in an octal number |
 | HEX        | wraps result in a hexadecimal number |
