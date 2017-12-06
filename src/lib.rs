@@ -7,11 +7,13 @@ pub mod parser;
 extern crate nom;
 
 pub use parser::parse;
+pub use parser::comparison::evaluate;
 pub use parser::{NONE, BIN, OCT, HEX, AS_DEGREES};
 
 #[cfg(test)]
 mod tests {
     use parse;
+    use evaluate;
     use NONE;
     use nom::IResult;
     use test::Bencher;
@@ -23,7 +25,7 @@ mod tests {
 
     #[test]
     fn now() {
-        println!("{}", parse("0b1011*(0b11-0b1)^0b101", NONE))
+        println!("{}", evaluate("4*4=cos(0)*16"))
     }
 
     #[test]
