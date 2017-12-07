@@ -37,6 +37,9 @@ named!(pub function_term<f64>,
                 tag!("fract") |
                 tag!("abs")   |
                 tag!("sig")   |
+                tag!("log2")  |
+                tag!("log10") |
+                tag!("ln")    |
                 tag!("sqrt")  |
                 tag!("root")  |
                 tag!("cbrt")  |
@@ -63,6 +66,9 @@ named!(pub function_term<f64>,
                 b"trunc" => val.trunc(),
                 b"fract" => val - val.floor(),
                 b"abs"   => val.abs(),
+                b"log2"  => val.log2(),
+                b"log10" => val.log10(),
+                b"ln"    => val.ln(),
                 b"sig"   => val.signum(),
                 b"sqrt"  => val.sqrt(),
                 b"root"  => val.sqrt(),
