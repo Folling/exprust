@@ -18,10 +18,7 @@ named!(pub eval<bool>, map!(
     ws!(tuple!(expr, comp, expr)),
     | (left, comp_op, right) : (f64, &[u8], f64)|{
         match comp_op {
-            b"==" => {
-                println!("{}, {}", left, right);
-                (left - right).abs() < 0.1f64
-            },
+            b"==" => left == right,
             b"<=" => left <= right,
             b">=" => left >= right,
             b"!=" => left != right,
