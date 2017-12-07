@@ -29,6 +29,9 @@ Exprust is an easy to use *expression parser* with some light [customisation opt
 * trunc
 * fract
 * abs
+* log2
+* log10
+* ln
 * sig
 * sqrt/root
 * cbrt
