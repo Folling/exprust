@@ -16,7 +16,7 @@ Exprust is an easy to use *expression parser* with some light [customisation opt
 | Hexadecimals			 | 0xA15+4 		    | 2585 			     |
 | Binary 				 | 0b11011 * 0xa4   | 4428 			     |
 | Octals				 | (0o17 * 4)^0b110 | 46656000000        |
-| Constants 			 | pi 			    | 3.1415926...       |
+| [Constants](#constants) | pi 			    | 3.1415926...       |
 | Degrees				 | sin(30°) 		| 0.5 				 |
 
 **Note that any number here can also be a float and any operation can be paired with any other, PEMDAS is fully implemented**
@@ -48,14 +48,32 @@ Exprust is an easy to use *expression parser* with some light [customisation opt
 * acosh
 * atanh
 
+## Constants
+
+The following constants are supported:
+
+* pi
+* e
+* phi
+
+**Note that for the moment the actual symbols for pi and phi (π, ϕ) are not supported**
+
+
 ## Customisation
 
 You can use a few flags to alter the output:
 
 | Flag       | Effect 			       |
 |:----------:|------------------------|
-| NONE       | returns normal output   |
-| AS_DEGREES | arc functions usually return the result in radians,<br>this switches it up to degrees |
+| NONE       | Returns normal output   |
+| AS_DEGREES | Arc functions usually return the result in radians,<br>this switches it up to degrees |
 | BIN 		 | Wraps result in a binary number |
 | OCT 		 | Wraps result in an octal number |
-| HEX        | wraps result in a hexadecimal number |
+| HEX        | Wraps result in a hexadecimal number |
+
+## Requests
+
+Extending this is fairly simple. There are a few things 
+such as convenience options (e.g. allowing 4(4+4) instead of 4*(4+4))
+which I could add, but frankly they're not a major concern for me at the moment.<br>
+Should you have any requests though, feel free to open a new issue and I'll look into it.
