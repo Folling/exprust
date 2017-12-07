@@ -25,7 +25,7 @@ mod tests {
 
     #[test]
     fn now() {
-        println!("{}", evaluate("4*4=cos(0)*16"))
+        println!("{}", parse("ln(e)", NONE))
     }
 
     #[test]
