@@ -15,10 +15,13 @@ named!(pub comp<&[u8]>,
 );
 
 named!(pub eval<bool>, map!(
-    tuple!(expr, comp, expr),
+    ws!(tuple!(expr, comp, expr)),
     | (left, comp_op, right) : (f64, &[u8], f64)|{
         match comp_op {
-            b"==" => left == right,
+            b"==" => {
+                println!("{}, {}", left, right);
+                (left - right).abs() < 0.1f64
+            },
             b"<=" => left <= right,
             b">=" => left >= right,
             b"!=" => left != right,
