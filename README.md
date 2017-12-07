@@ -2,6 +2,14 @@
 
 Exprust is an easy to use *expression parser* with some light [customisation options](#customisation).
 
+## How to use
+
+Exprust is held simple.<br> There are two available functions as well as 5 available flags for one of these functions.<br>
+* parse parses an expression and takes one or more [flags](#customisation) as a second parameter<br>
+  `parse("4+4", NONE)` => 8<br><br>
+* evaluate on the other hand evaluates a comparision<br>
+  `evaluate("4+4 = 8")` => true<br>
+
 ## Capabilities
 
 | Operation       		 | Example 		    | Result (as String) |
