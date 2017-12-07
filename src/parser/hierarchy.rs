@@ -15,9 +15,9 @@ named!(pub power_term<f64>, do_parse!(
 );
 
 named!(pub factor_term<f64>, do_parse!(
-        init: power_term >>
+        init: ws!(power_term) >>
         res: fold_many0!(
-            pair!(alt!(tag!("*")| tag!("/")), power_term),
+            ws!(pair!(alt!(tag!("*")| tag!("/")), power_term)),
             init,
             | acc, (op,val): (&[u8], f64)| {
                 if (op[0] as char) == '/' { acc / val } else { acc * val}
@@ -29,7 +29,7 @@ named!(pub factor_term<f64>, do_parse!(
 
 named!(pub function_term<f64>,
     map!(
-        pair!(alt_complete!(
+        ws!(pair!(alt_complete!(
                 tag!("floor") |
                 tag!("ceil")  |
                 tag!("round") |
@@ -56,7 +56,7 @@ named!(pub function_term<f64>,
                 tag!("cos")   |
                 tag!("tan")
             ),
-            delimited!(opt!(tag!("(")), expr, opt!(tag!(")")))
+            delimited!(opt!(tag!("(")), expr, opt!(tag!(")"))))
         ),
         |(func, val): (&[u8], f64)|{
             match func {
@@ -92,9 +92,9 @@ named!(pub function_term<f64>,
 );
 
 named!(pub expr<f64>, do_parse!(
-    init: alt_complete!(factor_term | function_term) >>
+    init: ws!(alt_complete!(factor_term | function_term)) >>
     res:  fold_many0!(
-        pair!(alt!(tag!("+") | tag!("-")), factor_term),
+        ws!(pair!(alt!(tag!("+") | tag!("-")), factor_term)),
         init,
         |acc, (op, val): (&[u8], f64)| {
             if (op[0] as char) == '+' { acc + val } else { acc - val }

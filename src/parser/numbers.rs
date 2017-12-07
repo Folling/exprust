@@ -21,11 +21,11 @@ named!(
 );
 
 named!(pub signs<&[u8]>,
-    take_while!(
+    ws!(take_while!(
         call!(
             |c| c == '+' as u8 || c == '-' as u8
         )
-    )
+    ))
 );
 
 named!(pub eval_signs<u8>,
@@ -121,11 +121,11 @@ named!(pub oct<f64>, map!(
 ));
 
 named!(pub parens<f64>,
-    delimited!(tag!("("), expr, tag!(")"))
+    ws!(delimited!(tag!("("), expr, tag!(")")))
 );
 
 named!(pub abs<f64>, map!(
-        delimited!(tag!("|"), expr, tag!("|")),
+        ws!(delimited!(tag!("|"), expr, tag!("|"))),
         |x : f64| {
             x.abs()
         }
@@ -151,7 +151,7 @@ named!(pub constant<f64>, map!(
 
 named!(pub degrees<f64>,
     map!(
-        pair!( alt_complete!(parens | hex | binary | float), tag!("°")),
+        ws!(pair!( alt_complete!(parens | hex | binary | float), tag!("°"))),
         | (x, _) : (f64, &[u8])|{
             x.to_radians()
         }

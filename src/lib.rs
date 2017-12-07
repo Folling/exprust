@@ -17,6 +17,7 @@ mod tests {
     use NONE;
     use nom::IResult;
     use test::Bencher;
+    use parser::hierarchy::expr;
 
     #[bench]
     fn bench_parse(b: &mut Bencher) {
@@ -25,7 +26,7 @@ mod tests {
 
     #[test]
     fn now() {
-        println!("{}", parse("ln(e)", NONE))
+        println!("{}", parse("sin  (  15+   4^ 2  +3*2*   cos(4) )", NONE));
     }
 
     #[test]
