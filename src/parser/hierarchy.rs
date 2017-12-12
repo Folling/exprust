@@ -111,10 +111,10 @@ pub const HEX : u64 = 0x03;
 pub const AS_DEGREES : u64 = 0x04;
 
 pub fn parse( expression : &str, flags : u64) -> String {
-    if let nom::IResult::Done(_ , mut underlying_float ) = expr(expression.as_bytes()) {
+    if let nom::IResult::Done(_ ,underlying_float ) = expr(expression.as_bytes()) {
         let mut res = underlying_float.to_string();
         if flags & AS_DEGREES == AS_DEGREES {
-            underlying_float = underlying_float.to_degrees();
+            return underlying_float.to_degrees().to_string();
         }
         if flags & HEX == HEX {
             res = format!("0x{:x}", underlying_float as u64);
