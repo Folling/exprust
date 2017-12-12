@@ -132,7 +132,7 @@ named!(pub abs<f64>, map!(
     )
 );
 
-named!(pub constant<f64>, map!(
+named!(pub unsigned_constant<f64>, map!(
         alt_complete!(
             tag!("pi") |
             tag!("e")  |
@@ -145,6 +145,19 @@ named!(pub constant<f64>, map!(
                 b"phi"=> 1.61803398874989484820458683436563811f64,
                 _ => 0f64
             }
+        }
+    ));
+
+named!(pub constant<f64>, map!(
+        pair!(
+          opt!(eval_signs),
+          unsigned_constant
+        ),
+        |(sign, value): (Option<u8>, f64)| {
+          match sign{
+            Some(b'-') => -1f64*value,
+            _ => 1f64 * value
+          }
         }
     )
 );

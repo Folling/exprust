@@ -24,7 +24,7 @@ mod tests {
 
     #[test]
     fn now() {
-        println!("{}", evaluate("cos(4°) == sin(86°)"));
+        println!("{}", parse("sin(30°)", NONE));
     }
 
     #[test]
